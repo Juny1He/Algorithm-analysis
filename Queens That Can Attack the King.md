@@ -2,7 +2,7 @@
 
 ## Question
 Medium
-01FavoriteShare
+
 On an 8x8 chessboard, there can be multiple Black Queens and one White King.
 Given an array of integer coordinates queens that represents the positions of the Black Queens, and a pair of coordinates king that represent the position of the White King, return the coordinates of all the queens (in any order) that can attack the King.
  
@@ -51,7 +51,7 @@ public List<List<Integer>> queensAttacktheKing(int[][] queens, int[] king) {
         for (int[] cur : queens) {
             set.add(cur[0] * 8 + cur[1]);
         }
-//      If the number of queen who can kill the king is 8, we stop the algorithm to save running time.
+	//      If the number of queen who can kill the king is 8, we stop the algorithm to save running time.
         int total = 0;
         int row = king[0];
         int col = king[1];
@@ -76,4 +76,4 @@ public List<List<Integer>> queensAttacktheKing(int[][] queens, int[] king) {
         }
         return result;
     }
-~
+
