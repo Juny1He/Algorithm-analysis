@@ -40,8 +40,9 @@ Constraints:
 We can check whether each queen is on the same row or the same column or the same diagonal with the king. Thus, there are 8 directions we can check. Since a queen can be blocked by other queen, we can run BFS from king, until all the positions are checked. We can use 8 boolean variables to record on each direction whether there is a queen can kill the king, if there is a such queen, the boolean variable becomes true and we don’t check that direction any more, since other queen on this direction would be blocked by such a queen.
 
 JAVA:
-
+~
 public List<List<Integer>> queensAttacktheKing(int[][] queens, int[] king) {
+	
         HashSet<Integer> set = new HashSet();
         List<List<Integer>> result = new ArrayList<>();
 		//8 directions
@@ -75,3 +76,4 @@ public List<List<Integer>> queensAttacktheKing(int[][] queens, int[] king) {
         }
         return result;
     }
+~
