@@ -17,7 +17,7 @@ Example:
 Input: [3,1,5,8]  
 Output: 167  
 Explanation: nums = [3,1,5,8] --> [3,5,8] -->   [3,8]   -->  [8]  --> []  
-             coins =  3*1*5      +  3*5*8    +  1*3*8      + 1*8*1   = 167  
+             coins =  3&times1&times5      +  3&times5&times8    +  1&times3&times8      + 1&times8&times1   = 167  
 
 ## Solution:
 
@@ -27,7 +27,7 @@ If we burst the i-th balloon at the start, we will get coins nums[i-1]*nums[i]*n
 If we consider i is the last one to burst, then we can see that balloons are separated into 2 sections, the left and right section do not affect each other. We can get the recurrance relation as follow :  
 OPT[start, end] = Max(OPT[start,i-1] + coins[i] + OPT[i+1,end]). (start < i < end).
 
-		public int maxCoins(int[] nums) {
+	public int maxCoins(int[] nums) {
         int[][] dp = new int[nums.length][nums.length];
         return maxCoins(nums,0,nums.length - 1, dp);
     }
