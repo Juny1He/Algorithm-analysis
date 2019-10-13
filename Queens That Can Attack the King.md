@@ -29,12 +29,12 @@ Input: queens = [[5,6],[7,7],[2,1],[0,7],[1,6],[5,1],[3,7],[0,3],[4,0],[1,2],[6,
 Output: [[2,3],[1,4],[1,6],[3,7],[4,3],[5,4],[4,5]]
  
 Constraints:
-•1 <= queens.length <= 63
-•queens[0].length == 2
-•0 <= queens[i][j] < 8
-•king.length == 2
-•0 <= king[0], king[1] < 8
-•At most one piece is allowed in a cell.
+•1 <= queens.length <= 63  
+•queens[0].length == 2  
+•0 <= queens[i][j] < 8  
+•king.length == 2  
+•0 <= king[0], king[1] < 8  
+•At most one piece is allowed in a cell.  
 
 
 ## Solution:
@@ -42,7 +42,6 @@ Constraints:
 We can check whether each queen is on the same row or the same column or the same diagonal with the king. Thus, there are 8 directions we can check. Since a queen can be blocked by other queen, we can run BFS from king, until all the positions are checked. We can use 8 boolean variables to record on each direction whether there is a queen can kill the king, if there is a such queen, the boolean variable becomes true and we don’t check that direction any more, since other queen on this direction would be blocked by such a queen.
 
 JAVA:
-~
 	
 	public List<List<Integer>> queensAttacktheKing(int[][] queens, int[] king) {
 	
