@@ -25,7 +25,7 @@ For this question the subproblems are overlapped. So we can use divide and conqu
 
 If we burst the i-th balloon at the start, we will get coins nums[i-1]*nums[i]*nums[i+1]. If we burst the i-th balloon at the end, we will get coins nums[-1]*nums[i]*nums[n].  
 If we consider i is the last one to burst, then we can see that balloons are separated into 2 sections, the left and right section do not affect each other. We can get the recurrance relation as follow :  
-OPT[start, end] = Max(OPT[start,i-1] + coins[i] + OPT[i+1,end]). (start < i < end).
+OPT[start, end] = Max(OPT[start,i-1] + coins[start-1] * coins[i] * coins[end+1] + OPT[i+1,end]). (start < i < end).
 
 	public int maxCoins(int[] nums) {
         int[][] dp = new int[nums.length][nums.length];
