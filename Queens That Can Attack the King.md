@@ -1,4 +1,4 @@
-# 1222. Queens That Can Attack the King
+# Queens That Can Attack the King
 
 ## Question
 Medium
