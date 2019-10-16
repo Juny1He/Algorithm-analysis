@@ -1,4 +1,4 @@
-# 312. Burst Balloons
+# Burst Balloons
 
 ## Question  
 Hard
