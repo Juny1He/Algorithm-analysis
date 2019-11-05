@@ -43,49 +43,49 @@ This question is mainly about Tree Operation. There are two ways to solve this p
 
 1. The first intuitive way is remove every leaf in each iteration, until the root of this tree become null. 
 
-	public List<List<Integer>> findLeaves(TreeNode root) {
-        List<List<Integer>> res = new ArrayList<>();
-        while(root != null)
-        {
-            List<Integer> temp = new ArrayList<>();
-            res.add(temp);
-            root = helper(root,res);
-        }
-        return res;
-    }
-    
-    public TreeNode helper(TreeNode root, List<List<Integer>> res)
-    {
-        if(root == null) return null;
-        if(root.left == null && root.right == null) 
-        {
-            res.get(res.size() - 1).add(root.val);
-            return null;
-        }
-        root.left = helper(root.left,res);
-        root.right = helper(root.right,res);
-        return root;
-    }
+		public List<List<Integer>> findLeaves(TreeNode root) {
+		List<List<Integer>> res = new ArrayList<>();
+		while(root != null)
+		{
+		    List<Integer> temp = new ArrayList<>();
+		    res.add(temp);
+		    root = helper(root,res);
+		}
+		return res;
+		}
+
+		public TreeNode helper(TreeNode root, List<List<Integer>> res)
+		{
+		if(root == null) return null;
+		if(root.left == null && root.right == null) 
+		{
+		    res.get(res.size() - 1).add(root.val);
+		    return null;
+		}
+		root.left = helper(root.left,res);
+		root.right = helper(root.right,res);
+		return root;
+		}
 In worst case, this takes O(n^2) time. 
 
 
 2. The second solution is calculate layer from the bottom node each TreeNode at and add them to the according list recursively. 
 
-	private List<List<Integer>> res = new ArrayList<>();
-    public List<List<Integer>> findLeaves(TreeNode root) {
-        helper(root);
-        return res;
-    }
-    
-    public int helper(TreeNode root)
-    {
-        if(root == null) return 0;
-        // if(root.left == null && root.right == null) return 1;
-        int level = 1 + Math.max(helper(root.left), helper(root.right));
-        if(res.size() < level) res.add(new ArrayList<>());
-        res.get(level-1).add(root.val);
-        return level;
-    }
+		private List<List<Integer>> res = new ArrayList<>();
+		public List<List<Integer>> findLeaves(TreeNode root) {
+		helper(root);
+		return res;
+		}
+
+		public int helper(TreeNode root)
+		{
+		if(root == null) return 0;
+		// if(root.left == null && root.right == null) return 1;
+		int level = 1 + Math.max(helper(root.left), helper(root.right));
+		if(res.size() < level) res.add(new ArrayList<>());
+		res.get(level-1).add(root.val);
+		return level;
+		}
 This takes O(n) time, since we just traverse each TreeNode once. 
 
 
