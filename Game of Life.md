@@ -42,7 +42,7 @@ For this question, the brute force Algorithm is just record 8 cells around each 
 
 Since there is only 2 states to record death and alive. We can use 4 states to record from death to alive, death to death, alive to alive, alive to death. Then just change the cells with their original state. 
 
-		private int m;
+    private int m;
     private int n;
     private int[][] dir = new int[][] {{-1,0},{1,0},{0,-1},{0,1},{1,1},{-1,-1},{1,-1},{-1,1}};
     public void gameOfLife(int[][] board) {
