@@ -26,8 +26,8 @@ The brute force solution of this problem is just record the knight position in e
 And a much more effcient algorithm is dynamic programming. And the state equation is as follow :  
 			dp[new_row][new_col][step] = sum (dp[row_i][col_i][step-1])
 
-		private static int[][] dir = new int[][]{{-1,-2},{1,2},{-2,-1},{2,1},{-1,2},{-2,1},{1,-2},{2,-1}};
-		public static double knightProbability(int N, int K, int r, int c) {
+	private static int[][] dir = new int[][]{{-1,-2},{1,2},{-2,-1},{2,1},{-1,2},{-2,1},{1,-2},{2,-1}};
+	public static double knightProbability(int N, int K, int r, int c) {
         double[][] board = new double[N][N];
         board[r][c] = 1;
         for(int k = 0; k < K; k ++)
