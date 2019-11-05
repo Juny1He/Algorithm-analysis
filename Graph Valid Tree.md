@@ -26,7 +26,7 @@ For this question, to check whether a graph is a tree, we have two things to che
 
 For BFS, just start from any nodes in the graph, and record each node has been visited, if we can meet a node has been visited, there is a cycle. 
 
-		public boolean validTree(int n, int[][] edges) {
+	public boolean validTree(int n, int[][] edges) {
         HashMap<Integer,HashSet<Integer>> neighbor = new HashMap<>();
         HashSet set = new HashSet();
         if(n== 1 && edges.length == 0) return true;
@@ -78,7 +78,7 @@ For BFS, just start from any nodes in the graph, and record each node has been v
 
 For Union Find, we use a array to record every nodes' parent. Initializing this array by themselves. And traverse each edges one by one. if the edge's two nodes do not have same parent, set one node's parent as the another node. Otherwise, return false, because there are no duplicate edges, thus if they have same parent before, they can form a cycly by themselves plus their parent node.
 
-		public boolean validTree(int n, int[][] edges) {
+	public boolean validTree(int n, int[][] edges) {
         int[] nums = new int[n];
         
         Arrays.fill(nums,-1);
