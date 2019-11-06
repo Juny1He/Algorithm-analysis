@@ -24,7 +24,7 @@ Note:
 This question is very similar to another question 3-Sum. For this question, we can use three pointers to solve. There are three pointers i, j, k (i < j < k). Firstly, we sort the array, which takes O(nlogn) time. Then, if nums[i] + nums[j] <= nums[k], i++, if nums[i] + nums[j] > nums[k], we can know there are j - i  combination can satisfy triangle number, then j--.  
 Another thing we need to note that the edge case is when the length of array smaller than 3, return 0.
 
-		public int triangleNumber(int[] nums) {
+	public int triangleNumber(int[] nums) {
         if(nums.length < 3) return 0;
         Arrays.sort(nums);
         int ret = 0;
