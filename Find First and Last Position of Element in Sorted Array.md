@@ -21,7 +21,7 @@ Example 2:
 ## Solution:
 
 For this question, the brute force solution is just search the left boundary and right boundary linearly, run two pass for loops. This takes O(2n) = O(n);
-
+  
 	public int[] searchRange(int[] nums, int target) {
 	        int left = -1;
 	        int right = -1;
@@ -47,7 +47,7 @@ For this question, the brute force solution is just search the left boundary and
     }
 
 However, this input array is in ascending order, thus we can search the left boundary and right boundary with binary search. One thing need to know is we should process the edge case carefully, when we find the middle number is target, we should check whether its neighbors are also the target and avoid the situation that the middle number is on the right or left corner so that it only has one neighbor.   
-
+  
 	public int[] searchRange(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
