@@ -33,7 +33,7 @@ There are three solutions about this questions : 1. Brute Force 2. Sliding Widow
 
 2. For the sliding window with 2 pass, we need two pointers left and right represented as the sliding window's left boundary and right boundary. and use a hash table or array to record the number of character, if there is no duplicate character in the sliding window, we increase the right boundary, otherwise increase the left boundary one by one to decrease the number of character, until there are no duplicate characters.
 
-	public int lengthOfLongestSubstring(String s) {
+		public int lengthOfLongestSubstring(String s) {
 	        int[] let = new int[256];
 	        int left = 0;
 	        int ret = 0;
@@ -47,12 +47,12 @@ There are three solutions about this questions : 1. Brute Force 2. Sliding Widow
 	            }
 	            ret = Math.max(ret,i-left+1);
 	        }
-	        return ret;
-	    }
+	        	return ret;
+	    	}
 
 3. For the sliding window with 1 pass, we can use a array or hashmap to record the index of current character(or index plus one). When we meet the duplicate character while traversing, we update the left boundary to the previous same character's index plus one, then update this character's index into the array or hashmap(No need to update the left boundary one by one).
 
-	public int lengthOfLongestSubstring(String s) {
+		public int lengthOfLongestSubstring(String s) {
 	        if(s.length() == 1) return 1;
 	        int[] hash = new int[128];
 	        int ret = 0;
