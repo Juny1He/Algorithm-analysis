@@ -48,7 +48,7 @@ There are three solutions about this questions : 1. Brute Force 2. Sliding Widow
 	            ret = Math.max(ret,i-left+1);
 	        }
 	        	return ret;
-	    	}
+	    }
 
 3. For the sliding window with 1 pass, we can use a array or hashmap to record the index of current character(or index plus one). When we meet the duplicate character while traversing, we update the left boundary to the previous same character's index plus one, then update this character's index into the array or hashmap(No need to update the left boundary one by one).
 
