@@ -18,7 +18,7 @@ The brute-force solution is calculate sum of each sub-array, then record the lar
 For dynamic programming, we need to take care of negative value, if sum < 0, we should get rid of it, and start record later subarray with sum of 0. 
 
 
-		public int maxSubArray(int[] nums) {
+	public int maxSubArray(int[] nums) {
         int sum = Integer.MIN_VALUE;
         int cur_sum = 0;
         for(int i = 0; i < nums.length; i ++)
