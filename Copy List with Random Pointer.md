@@ -51,30 +51,30 @@ You must return the copy of the given head as a reference to the cloned list.
 2. Another optimized solution is combining the old node and new node together alternately. Then, connect the new node to its random node, then split the new node and old node. This takes O(n) time, and O(1) time. 
 
 		public Node copyRandomList(Node head) {
-		if(head == null) return null;
-		Node p = head;
-		while(p != null)
-		{
-		    Node add = new Node(p.val,null,null);
-		    add.next = p.next;
-		    p.next = add;
-		    p = p.next.next;
-		}
-		p = head;
-		while(p!= null)
-		{
-		    p.next.random = p.random == null ? null : p.random.next;
-		    p = p.next.next;
-		}
-		Node dummy = new Node(-1,null,null);
-		Node cur = dummy;
-		p = head;
-		while(p!= null)
-		{
-		    cur.next = p.next;
-		    p.next= p.next.next;
-		    p = p.next;
-		    cur = cur.next;
-		}
-		return dummy.next;
+			if(head == null) return null;
+			Node p = head;
+			while(p != null)
+			{
+			    Node add = new Node(p.val,null,null);
+			    add.next = p.next;
+			    p.next = add;
+			    p = p.next.next;
+			}
+			p = head;
+			while(p!= null)
+			{
+			    p.next.random = p.random == null ? null : p.random.next;
+			    p = p.next.next;
+			}
+			Node dummy = new Node(-1,null,null);
+			Node cur = dummy;
+			p = head;
+			while(p!= null)
+			{
+			    cur.next = p.next;
+			    p.next= p.next.next;
+			    p = p.next;
+			    cur = cur.next;
+			}
+			return dummy.next;
 	    }
