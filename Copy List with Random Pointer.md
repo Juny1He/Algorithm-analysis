@@ -25,57 +25,56 @@ You must return the copy of the given head as a reference to the cloned list.
 
 1. This problem is a little bit tricky because of the node's random point, when we want to point the new node to its random node, we do not know whether does it be generated before. Thus, a intuitive solution is using a hash map to record the node we have generated. This hash map is used to map the new node to old node. So if we have generated it before, we just map.get(old node) to get the new old. This takes O(n) time, and O(n) space. 
 
-
-	private HashMap<Node, Node> map = new HashMap<>();
-    public Node copyRandomList(Node head) {
-        if(head == null) return null;
-        Node oldNode = head;
-        Node dummy = new Node(-1,null,null);
-        Node cur = dummy;
-        while(oldNode != null)
-        {
-            cur.next = getClonedNode(oldNode);
-            cur.next.random = getClonedNode(oldNode.random);
-            cur = cur.next;
-            oldNode = oldNode.next;
-        }
-        return dummy.next;
-    }
-    public Node getClonedNode(Node node)
-    {
-        if(node == null) return null;
-        if(!map.containsKey(node))
-            map.put(node,new Node(node.val,null,null));
-        return map.get(node);
-    }
+		private HashMap<Node, Node> map = new HashMap<>();
+		public Node copyRandomList(Node head) {
+			if(head == null) return null;
+			Node oldNode = head;
+			Node dummy = new Node(-1,null,null);
+			Node cur = dummy;
+			while(oldNode != null)
+			{
+			    cur.next = getClonedNode(oldNode);
+			    cur.next.random = getClonedNode(oldNode.random);
+			    cur = cur.next;
+			    oldNode = oldNode.next;
+			}
+			return dummy.next;
+		}	
+		public Node getClonedNode(Node node)
+		{
+			if(node == null) return null;
+			if(!map.containsKey(node))
+			    map.put(node,new Node(node.val,null,null));
+			return map.get(node);
+		}
 
 2. Another optimized solution is combining the old node and new node together alternately. Then, connect the new node to its random node, then split the new node and old node. This takes O(n) time, and O(1) time. 
 
-	public Node copyRandomList(Node head) {
-        if(head == null) return null;
-        Node p = head;
-        while(p != null)
-        {
-            Node add = new Node(p.val,null,null);
-            add.next = p.next;
-            p.next = add;
-            p = p.next.next;
-        }
-        p = head;
-        while(p!= null)
-        {
-            p.next.random = p.random == null ? null : p.random.next;
-            p = p.next.next;
-        }
-        Node dummy = new Node(-1,null,null);
-        Node cur = dummy;
-        p = head;
-        while(p!= null)
-        {
-            cur.next = p.next;
-            p.next= p.next.next;
-            p = p.next;
-            cur = cur.next;
-        }
-        return dummy.next;
-    }
+		public Node copyRandomList(Node head) {
+		if(head == null) return null;
+		Node p = head;
+		while(p != null)
+		{
+		    Node add = new Node(p.val,null,null);
+		    add.next = p.next;
+		    p.next = add;
+		    p = p.next.next;
+		}
+		p = head;
+		while(p!= null)
+		{
+		    p.next.random = p.random == null ? null : p.random.next;
+		    p = p.next.next;
+		}
+		Node dummy = new Node(-1,null,null);
+		Node cur = dummy;
+		p = head;
+		while(p!= null)
+		{
+		    cur.next = p.next;
+		    p.next= p.next.next;
+		    p = p.next;
+		    cur = cur.next;
+		}
+		return dummy.next;
+	    }
