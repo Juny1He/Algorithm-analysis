@@ -54,13 +54,13 @@ Output the coin needed in a list
 
 Since we got the minimum number of coins needed and the dynamic programming array, we can find the path we selected coins recursively. Using the recurrance relation as follows :
 
-    while i >= 0
+   while i >= 0
         if OPT(i) = OPT(i-d) + 1 :
                 we add d to path
                 set i = i-d
         end if
     end while
-
+    
     public static List<Integer> path(int[] coins, int amount)
     {
         //        OPT(i) = min{OPT(i-di) + 1};
