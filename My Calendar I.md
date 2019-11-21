@@ -33,23 +33,30 @@ Note:
 The Brute Force of this solution is quite straightforward : just use a list to store all the intervals and compare the current interval's start and end with existing intervals' start and end. 
 
 	class MyCalendar {
-	    TreeMap<Integer,Integer> map = new TreeMap<>();
+	    List<List<Integer>> time = new ArrayList<>();
 	    public MyCalendar() {
-	        
+
 	    }
-	    
+
 	    public boolean book(int start, int end) {
-	        Integer prev = map.floorKey(start);
-	        Integer next = map.ceilingKey(start);
-	        if((prev == null || map.get(prev) <= start) &&  (next == null || next >= end))
-	        {
-	            map.put(start,end);
-	            return true;
-	        }
-	        
-	        return false;
+		if(time.size() != 0)
+		{
+		    for(int i = 0; i < time.size(); i ++)
+		    {
+			List<Integer> temp = time.get(i);
+			int temp_start = temp.get(0);
+			int temp_end = temp.get(1);
+			if(temp_end <= start || temp_start >=end ) continue;
+			return false;
+		    } 
+		}
+		List<Integer> temp = Arrays.asList(start,end);
+		time.add(temp);
+		return true;
 	    }
+
 	}
+
 	/**
 	 * Your MyCalendar object will be instantiated and called as such:
 	 * MyCalendar obj = new MyCalendar();
