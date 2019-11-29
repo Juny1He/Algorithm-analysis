@@ -31,52 +31,52 @@ The length of both nums1 and nums2 would not exceed 1000.
 
 1. The Brute Force solution of this problem is search every next greater element of nums1's element in nums2. An optimized way is use a hash map to store the index of nums1's element in nums2. The total time complexity is O(n^2).
 
-    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        HashMap<Integer,Integer> map = new HashMap<>();
-        for(int i = 0; i < nums2.length; i ++)
-        {
-            map.put(nums2[i],i);
-        }
-        int[] ret = new int[nums1.length];
-        Arrays.fill(ret,-1);
-        for(int i = 0; i < nums1.length; i ++)
-        {
-            for(int j = map.get(nums1[i]); j < nums2.length; j ++)
+        public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+            HashMap<Integer,Integer> map = new HashMap<>();
+            for(int i = 0; i < nums2.length; i ++)
             {
-                if(nums2[j] > nums1[i])
+                map.put(nums2[i],i);
+            }
+            int[] ret = new int[nums1.length];
+            Arrays.fill(ret,-1);
+            for(int i = 0; i < nums1.length; i ++)
+            {
+                for(int j = map.get(nums1[i]); j < nums2.length; j ++)
                 {
-                    ret[i] = nums2[j];
-                    break;
+                    if(nums2[j] > nums1[i])
+                    {
+                        ret[i] = nums2[j];
+                        break;
+                    }
                 }
             }
+            return ret;
         }
-        return ret;
-    }
 
 
 2. Another clever solution is traverse the nums2 and use a hashmap to record next greater element of nums2's element in nums2. Then, we can know the next greater element of nums1's element. For this problem, we can use a stack to traverse the nums2, the stack's element in a non-increasing order, if we find the nums2[i] > stack's top element, we know that the nums2[i] is the next greater element of top element and pop the top element, push the nums2[i] into stack, o.w. store the nums2[i] into stack.
 
-    public int[] nextGreaterElement(int[] nums1, int[] nums2) {
-        if(nums2.length == 0) return nums2;
-        HashMap<Integer,Integer> map = new HashMap<>();
-        Stack<Integer> st = new Stack();
-        st.push(nums2[0]);
-        for(int i = 1; i < nums2.length; i ++)
-        {
-            while(!st.isEmpty() && nums2[i] > st.peek())
+        public int[] nextGreaterElement(int[] nums1, int[] nums2) {
+            if(nums2.length == 0) return nums2;
+            HashMap<Integer,Integer> map = new HashMap<>();
+            Stack<Integer> st = new Stack();
+            st.push(nums2[0]);
+            for(int i = 1; i < nums2.length; i ++)
             {
-                map.put(st.pop(),nums2[i]);
+                while(!st.isEmpty() && nums2[i] > st.peek())
+                {
+                    map.put(st.pop(),nums2[i]);
+                }
+                st.push(nums2[i]);
             }
-            st.push(nums2[i]);
-        }
-        while(!st.isEmpty())
-        {
-            map.put(st.pop(),-1);
-        }
-        int[] ret = new int[nums1.length];
-        for(int i = 0; i < nums1.length; i ++)
-        {
-            ret[i] = map.get(nums1[i]);
-        }
-        return ret;
-    } 
+            while(!st.isEmpty())
+            {
+                map.put(st.pop(),-1);
+            }
+            int[] ret = new int[nums1.length];
+            for(int i = 0; i < nums1.length; i ++)
+            {
+                ret[i] = map.get(nums1[i]);
+            }
+            return ret;
+        } 
