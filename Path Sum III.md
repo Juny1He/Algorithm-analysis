@@ -35,7 +35,7 @@ For this problem, the Brute Force is set every node as root, and traverse all th
 
 One thing need to note that we should use a helper function to do this, the original function is to set every node as root, the helper function is to count the number of path. 
 
-	 	public int pathSum(TreeNode root, int sum) {
+	    public int pathSum(TreeNode root, int sum) {
 	        if(root == null) return 0;
 	        return helper(root,sum)+ pathSum(root.left,sum)+ pathSum(root.right,sum);
 	    }
@@ -49,7 +49,7 @@ One thing need to note that we should use a helper function to do this, the orig
 
 A better solution is to use a hashmap to store the prefixSum and its frequency, and we just need to calculate whether there is a key in hashmap that satisfied currSum - target == key, if it satisfied we can update the number of path. One thing we need to note that after we traversing a subtree, we should remove the prefixSum in that subtree. The time complexity is O(n).
 
-		int count = 0;
+	    private int count = 0;
 	    public int pathSum(TreeNode root, int sum) {
 	        HashMap<Integer,Integer> map = new HashMap<>();
 	        map.put(0,1);
